@@ -21,7 +21,7 @@ export async function onRequest({ request, params }) {
     response.headers.set('Cache-Control', 'public, max-age=3600'); // Cache for 1 hour
 
     // Store the response in the Cloudflare cache for future requests
-    await cache.put(cacheKey, response.clone()); // No event.waitUntil needed in Pages Functions
+    await cache.put(cacheKey, response.clone()); // Cache the response at the edge
   }
 
   // Return the cached or newly generated response
